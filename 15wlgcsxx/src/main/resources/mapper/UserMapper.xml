@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smxy.dao.UserMapper">
+	<resultMap id="userMap" type="com.smxy.bean.User">
+    <id column="uid"  property="uid" />
+    <result column="username"  property="username" />
+    <result column="userRoot"  property="userRoot" />
+    <result column="password"  property="password" />
+  </resultMap>
+	
+	<select id="selectByUsername" parameterType="String" resultMap="userMap"> 
+		select * from t_user where username=#{username};
+		
+	</select>
+	
+	
+	<insert id="insertUser" parameterType="com.smxy.dao.UserMapper">
+		insert into t_user ( username, password, email)values (#{username},#{password},#{email});
+	</insert>
+	
+	
+	
+</mapper>
